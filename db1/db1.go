@@ -2,8 +2,6 @@ package main
 
 import (
 	"database/sql"
-	"log"
-	"strconv"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -19,7 +17,7 @@ func main() {
 	defer db.Close()
 
 	var (
-		ID        int
+		//ID        int
 		Username  string
 		Email     string
 		Password  string
@@ -121,23 +119,89 @@ func main() {
 	//_, err = db.Exec("DELETE FROM xTable1; DELETE FROM xTable2;")
 
 	//Preparing Queries
-	stmt, errQ := db.Prepare("SELECT * FROM users WHERE id = ?")
-	if errQ != nil {
-		log.Fatal(errQ)
-	}
-	defer stmt.Close()
 
-	rows, errX := stmt.Query(5)
-	if errX != nil {
-		log.Fatal(errX)
-	}
-	defer rows.Close()
-
-	for rows.Next() {
-		scanErr := rows.Scan(&ID, &Username, &Email, &Password, &FirstName, &LastName, &Birthdate, &IsActive)
-		if scanErr != nil {
-			log.Fatal(scanErr)
+	/*
+		stmt, errQ := db.Prepare("SELECT * FROM users WHERE id = ?")
+		if errQ != nil {
+			log.Fatal(errQ)
 		}
-		log.Printf("Bulunan satır içeriği: %q", strconv.Itoa(ID)+" "+Username+" "+Email+" "+Password+" "+FirstName+" "+LastName+" "+Birthdate+" "+strconv.FormatBool(IsActive))
-	}
+		defer stmt.Close()
+
+		rows, errX := stmt.Query(5)
+		if errX != nil {
+			log.Fatal(errX)
+		}
+		defer rows.Close()
+
+		for rows.Next() {
+			scanErr := rows.Scan(&ID, &Username, &Email, &Password, &FirstName, &LastName, &Birthdate, &IsActive)
+			if scanErr != nil {
+				log.Fatal(scanErr)
+			}
+			log.Printf("Bulunan satır içeriği: %q", strconv.Itoa(ID)+" "+Username+" "+Email+" "+Password+" "+FirstName+" "+LastName+" "+Birthdate+" "+strconv.FormatBool(IsActive))
+		}
+	*/
+
+	//Preparing Query Single Row
+
+	/*
+		stmt, errQ := db.Prepare("SELECT * FROM users WHERE ID = ?")
+
+		if errQ != nil {
+			log.Fatal(errQ)
+		}
+
+		errX := stmt.QueryRow(5).Scan(&ID, &Username, &Email, &Password, &FirstName, &LastName, &Birthdate, &IsActive)
+
+		if errX != nil {
+			log.Fatal(errX)
+		}
+
+		fmt.Println(FirstName + " " + LastName)
+	*/
+
+	//Modifying Data
+	/*
+		res, errX := db.Exec("DELETE FROM users LIMIT 1")
+
+		if errX != nil {
+			log.Fatal(errX)
+		}
+
+		rowCount, errY := res.RowsAffected()
+
+		if errY != nil {
+			log.Fatal(errY)
+		}
+		fmt.Println(rowCount)
+
+		lastID, errL := res.LastInsertId()
+
+		if errL != nil {
+			log.Fatal(errL)
+		}
+
+		fmt.Println(lastID)
+	*/
+
+	//Insert İşlemi
+	/*
+		stmt, err := db.Prepare("INSERT INTO users(Username, Email, Password, FirstName, LastName, BirthDate, IsActive) VALUES(?,?,?,?,?,?,?)")
+		Username = "CO"
+		Email = "abc@xyz.co"
+		Password = "1234!"
+		FirstName = "Abc"
+		LastName = "Xyz"
+		Birthdate = "2017.1.2"
+		IsActive = true
+
+		res, errStmt := stmt.Exec(Username, Email, Password, FirstName, LastName, Birthdate, IsActive)
+
+		if errStmt != nil {
+			log.Fatal(errStmt)
+		}
+
+		fmt.Println(res.LastInsertId())
+	*/
+
 }
