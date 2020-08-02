@@ -16,16 +16,18 @@ func main() {
 	//sql
 	defer db.Close()
 
-	var (
-		//ID        int
-		Username  string
-		Email     string
-		Password  string
-		FirstName string
-		LastName  string
-		Birthdate string
-		IsActive  bool
-	)
+	/*
+		var (
+			//ID        int
+			Username  string
+			Email     string
+			Password  string
+			FirstName string
+			LastName  string
+			Birthdate string
+			IsActive  bool
+		)
+	*/
 
 	/*
 			createStatement := "`users`(`ID` int(11) NOT NULL AUTO_INCREMENT, `Username` varchar(45) NOT NULL, `Email` varchar(45) NOT NULL, `Password` varchar(45) NOT NULL, `FirstName` varchar(45) NOT NULL, `LastName` varchar(45) NOT NULL, `BirthDate` varchar(45) NOT NULL, IsActive tinyint(1) DEFAULT NULL, PRIMARY KEY (`ID`), UNIQUE KEY `ID_UNIQUE` (`ID`)) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;"
