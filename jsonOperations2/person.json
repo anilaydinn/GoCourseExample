@@ -1,0 +1,37 @@
+{
+    "ID": 9,
+    "FirstName": "Anıl",
+    "LastName": "Aydın",
+    "UserName": "thracian22",
+    "Gender": "true",
+    "Name": {
+        "Family": "Kartelam",
+        "Personal": "Anıl"
+    },
+    "Email": [
+        {
+            "ID": 1,
+            "Kind": "work",
+            "Address": "anil_aydinn@outlook.com"
+        },
+        {
+            "ID": 2,
+            "Kind": "home",
+            "Address": "anil_aydin98@hotmail.com"
+        }
+    ],
+    "Interest": [
+        {
+            "ID": 1,
+            "Name": "Go"
+        },
+        {
+            "ID": 2,
+            "Name": "Javascript"
+        },
+        {
+            "ID": 3,
+            "Name": "Java"
+        }
+    ]
+}
